@@ -1,0 +1,209 @@
+# AGENTS.md - AI Agent 协作指南
+
+> 本文件为 AI Agent（如 Claude、GPT、Copilot 等）提供项目上下文和协作规范。
+> 采用渐进式披露策略：先提供全局概览，按需深入细节。
+
+## 项目概览
+
+**GraphSpec** 是一个可交互的架构态势感知工具，让 AI 和开发者都能从宏观全貌逐步下钻到微观细节。
+
+### 核心价值
+- 解决 AI 上下文有限的痛点
+- 按需加载、渐进披露架构信息
+- 保持 Issue → Spec → 架构 → 代码 的链路同步
+
+### 当前状态
+- **版本**: V0.1（规划中）
+- **阶段**: 初始化阶段，基础设施搭建
+
+---
+
+## 目录结构索引
+
+```
+GraphSpec/
+├── .github/                    # GitHub 配置
+│   ├── ISSUE_TEMPLATE/         # Issue 模板
+│   ├── prompts/                # AI Prompt 模板
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── labels.yml              # 标签配置
+├── .graphspec/                 # [待实现] 架构数据目录
+├── packages/                   # [待实现] 代码包
+│   ├── cli/                    # CLI 工具
+│   ├── core/                   # 核心引擎
+│   └── web/                    # Web 可视化
+├── docs/                       # [待实现] 文档
+├── AGENTS.md                   # 本文件
+├── README.md                   # 项目说明
+└── LICENSE                     # MIT License
+```
+
+---
+
+## 开发规范
+
+### 代码风格
+
+> 技术栈待定盘，以下为预期规范
+
+#### TypeScript/JavaScript (如果采用)
+- 使用 Bun 作为运行时和包管理器
+- ESLint + Prettier 格式化
+- 优先使用 TypeScript
+
+#### Rust (如果采用)
+- `cargo fmt` 格式化
+- `cargo clippy` 代码检查
+- 使用 `anyhow::Result` 作为错误类型
+
+### Git 提交规范
+
+使用 Angular Commit Message 规范：
+
+```
+<type>(<scope>): <subject>
+
+<body>
+
+<footer>
+```
+
+**Type 类型**:
+- `feat`: 新功能
+- `fix`: Bug 修复
+- `docs`: 仅文档变更
+- `style`: 格式调整（不影响代码逻辑）
+- `refactor`: 重构（既不是新功能也不是修复）
+- `perf`: 性能优化
+- `test`: 添加或修正测试
+- `build`: 构建系统或外部依赖变更
+- `ci`: CI 配置变更
+
+**Scope 范围**（可选）:
+- `cli`: 命令行工具
+- `core`: 核心引擎
+- `web`: Web 可视化
+- `docs`: 文档
+
+**规则**:
+- subject 首字母小写，不加句号
+- body 说明 what 和 why，而非 how
+- 破坏性变更在 footer 添加 `BREAKING CHANGE:`
+
+**示例**:
+```
+feat(cli): add init command skeleton
+
+Add basic structure for the init command that creates
+.graphspec directory with default configuration.
+
+Closes #12
+```
+
+```
+fix(core): resolve config parsing error
+
+The YAML parser was failing on nested objects.
+This fix properly handles recursive structures.
+
+BREAKING CHANGE: config format changed from JSON to YAML
+```
+
+### 分支策略
+
+- `main`: 稳定版本
+- `dev`: 开发分支
+- `feat/*`: 功能分支
+- `fix/*`: 修复分支
+
+---
+
+## AI 协作指南
+
+### 上下文加载策略
+
+1. **首次接触项目时**：
+   - 先读 `AGENTS.md`（本文件）获取全局概览
+   - 再读 `README.md` 了解用户视角
+
+2. **开发特定功能时**：
+   - 读取相关模块的目录
+   - 查看相关 Issue 和 Spec
+
+3. **调试问题时**：
+   - 定位具体文件和行号
+   - 查看相关测试用例
+
+### 任务执行规范
+
+1. **接手任务前**：
+   - 阅读关联的 Issue 描述
+   - 确认验收标准
+
+2. **开发过程中**：
+   - 增量式提交，保持 commit 粒度小
+   - 及时更新相关文档
+
+3. **提交 PR 前**：
+   - 运行完整测试套件
+   - 确保代码格式化通过
+   - 更新 AGENTS.md（如有结构变更）
+
+### 护栏机制
+
+**变更需人工确认的场景**：
+- 架构层面的变更
+- 核心模块的重构
+- 破坏性 API 变更
+- 删除代码超过 100 行
+
+**自动执行的场景**：
+- 格式化和 lint 修复
+- 文档补充和更新
+- 测试用例添加
+
+---
+
+## 模块索引
+
+> 以下模块待实现，此处为规划索引
+
+### CLI (`packages/cli/`)
+- **职责**: 命令行入口，用户交互
+- **命令**: `init`, `view`, `sync`
+- **依赖**: `@graphspec/core`
+
+### Core (`packages/core/`)
+- **职责**: 核心解析和数据处理
+- **能力**: 架构图解析、数据存储、变更检测
+- **接口**: TypeScript API
+
+### Web (`packages/web/`)
+- **职责**: 本地可视化服务
+- **技术**: 待定（可能 React + D3.js）
+- **入口**: `localhost:3000`
+
+---
+
+## 常见问题
+
+### Q: 如何新增一个 CLI 命令？
+A: 待补充具体步骤
+
+### Q: 架构数据格式是什么？
+A: `.graphspec/` 目录结构待定义
+
+### Q: 如何贡献代码？
+A: 参见 README.md 的贡献指南
+
+---
+
+## 更新日志
+
+| 日期 | 版本 | 变更 |
+|------|------|------|
+| 2026-04-02 | 0.1.0 | 初始化 AGENTS.md |
+
+---
+
+> 本文件应随项目演进持续更新，保持与代码结构同步。
