@@ -1,0 +1,27 @@
+# Bun 配置文件
+# 详见: https://bun.sh/docs/runtime/bunfig
+
+# 运行时配置
+logLevel = "warn"
+telemetry = false
+
+# JSX 配置 (如果使用 React)
+# jsx = "react"
+# jsxImportSource = "react"
+
+# 测试配置
+[test]
+root = "."
+coverage = false
+# coverageThreshold = 0.8
+
+# 包管理器配置
+[install]
+# 使用文本格式 lockfile
+saveTextLockfile = true
+# 精确版本
+exact = false
+
+# 缓存配置
+[install.cache]
+disable = false
