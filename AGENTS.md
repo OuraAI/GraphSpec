@@ -44,17 +44,10 @@ GraphSpec/
 
 ### 代码风格
 
-> 技术栈待定盘，以下为预期规范
-
-#### TypeScript/JavaScript (如果采用)
-- 使用 Bun 作为运行时和包管理器
-- ESLint + Prettier 格式化
-- 优先使用 TypeScript
-
-#### Rust (如果采用)
-- `cargo fmt` 格式化
-- `cargo clippy` 代码检查
-- 使用 `anyhow::Result` 作为错误类型
+#### 技术栈
+- **运行时**: Bun
+- **语言**: TypeScript
+- **Lint/Format**: OXC
 
 ### Git 提交规范
 
