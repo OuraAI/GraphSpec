@@ -51,56 +51,9 @@ GraphSpec/
 
 ### Git 提交规范
 
-使用 Angular Commit Message 规范：
+使用 Angular Commit Message 规范。
 
-```
-<type>(<scope>): <subject>
-
-<body>
-
-<footer>
-```
-
-**Type 类型**:
-- `feat`: 新功能
-- `fix`: Bug 修复
-- `docs`: 仅文档变更
-- `style`: 格式调整（不影响代码逻辑）
-- `refactor`: 重构（既不是新功能也不是修复）
-- `perf`: 性能优化
-- `test`: 添加或修正测试
-- `build`: 构建系统或外部依赖变更
-- `ci`: CI 配置变更
-
-**Scope 范围**（可选）:
-- `cli`: 命令行工具
-- `core`: 核心引擎
-- `web`: Web 可视化
-- `docs`: 文档
-
-**规则**:
-- subject 首字母小写，不加句号
-- body 说明 what 和 why，而非 how
-- 破坏性变更在 footer 添加 `BREAKING CHANGE:`
-
-**示例**:
-```
-feat(cli): add init command skeleton
-
-Add basic structure for the init command that creates
-.graphspec directory with default configuration.
-
-Closes #12
-```
-
-```
-fix(core): resolve config parsing error
-
-The YAML parser was failing on nested objects.
-This fix properly handles recursive structures.
-
-BREAKING CHANGE: config format changed from JSON to YAML
-```
+**Scope**: `cli`, `core`, `web`, `docs`
 
 ### 分支策略
 
