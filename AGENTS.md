@@ -41,7 +41,6 @@
 GraphSpec/
 ├── .github/                    # GitHub 配置
 │   ├── ISSUE_TEMPLATE/         # Issue 模板
-│   ├── prompts/                # AI Prompt 模板
 │   ├── PULL_REQUEST_TEMPLATE.md
 │   └── labels.yml              # 标签配置
 ├── .graphspec/                 # [待实现] 架构数据目录
@@ -58,12 +57,6 @@ GraphSpec/
 ---
 
 ## AI 协作规范
-
-### 上下文加载策略
-
-1. **首次接触项目**: 先读 `AGENTS.md` 获取全局概览，再读 `README.md` 了解用户视角
-2. **开发特定功能**: 按 Local Instruction Precedence 规则加载最近的指令文件
-3. **调试问题**: 定位具体文件和行号，查看相关测试用例
 
 ### 护栏机制
 
