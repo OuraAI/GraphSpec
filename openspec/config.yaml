@@ -1,0 +1,27 @@
+schema: spec-driven
+
+context: |
+  Tech stack: Bun, TypeScript, OXC
+  Package manager: Bun
+  Structure: Monorepo (packages/cli, packages/core, packages/web)
+
+  Project: GraphSpec - 可交互的架构态势感知工具
+  Core problem: AI 的上下文有限，改一个功能的时候它看不到全貌
+
+  Cross-platform requirements:
+  - Target platforms: Linux, macOS
+  - Use path.join() or path.resolve() for file paths
+  - Consider case sensitivity differences in file systems
+
+rules:
+  specs:
+    - Be explicit about mechanisms, not just outcomes (say HOW, not just WHAT)
+    - Include scenarios for edge cases and error handling
+    - Requirements must specify cross-platform behavior when relevant
+  tasks:
+    - Break down into small, verifiable units
+    - Include verification steps for each task
+  design:
+    - Document architectural decisions and trade-offs
+    - Prefer existing patterns from the codebase
+    - Use Bun native APIs when available
