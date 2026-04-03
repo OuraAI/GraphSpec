@@ -44,8 +44,6 @@ GraphSpec/
 ├── .codex/                     # Codex 配置（OpenSpec 生成）
 ├── .github/                    # GitHub 配置
 │   ├── ISSUE_TEMPLATE/         # Issue 模板
-│   ├── prompts/                # GitHub Copilot prompts（OpenSpec 生成）
-│   ├── skills/                 # GitHub Copilot skills（OpenSpec 生成）
 │   ├── PULL_REQUEST_TEMPLATE.md
 │   └── labels.yml              # 标签配置
 ├── .graphspec/                 # [待实现] 架构数据目录
