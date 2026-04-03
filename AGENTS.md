@@ -45,8 +45,8 @@
 
 ```
 GraphSpec/
+├── .agents/                    # Codex skills（Agent Skills 标准路径）
 ├── .claude/                    # Claude Code 配置（OpenSpec 生成）
-├── .codex/                     # Codex 配置（OpenSpec 生成）
 ├── .github/                    # GitHub 配置
 │   ├── ISSUE_TEMPLATE/         # Issue 模板
 │   ├── PULL_REQUEST_TEMPLATE.md
@@ -63,7 +63,8 @@ GraphSpec/
 │   ├── core/                   # 核心引擎
 │   └── web/                    # Web 可视化
 ├── docs/                       # [待实现] 文档
-├── AGENTS.md                   # 本文件
+├── AGENTS.md                   # 本文件（OpenCode/Codex/Copilot 共享）
+├── CLAUDE.md                   # Claude Code 入口（引用 AGENTS.md）
 ├── README.md                   # 项目说明
 └── LICENSE                     # MIT License
 ```
