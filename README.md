@@ -40,15 +40,28 @@ GraphSpec 想做的，是把"架构态势感知"从"人脑记住项目结构"这
 
 ```
 GraphSpec/
-├── .github/              # GitHub 配置（Issue/PR 模板、Labels）
-├── .graphspec/           # [待实现] 架构数据目录
-├── packages/             # [待实现] 代码包
-│   ├── cli/              # CLI 工具
-│   ├── core/             # 核心引擎
-│   └── web/              # Web 可视化
-├── AGENTS.md             # AI Agent 协作指南
-├── README.md             # 本文件
-└── LICENSE               # MIT License
+├── .claude/                    # Claude Code 配置（OpenSpec 生成）
+├── .codex/                     # Codex 配置（OpenSpec 生成）
+├── .github/                    # GitHub 配置
+│   ├── ISSUE_TEMPLATE/         # Issue 模板
+│   ├── prompts/                # GitHub Copilot prompts（OpenSpec 生成）
+│   ├── skills/                 # GitHub Copilot skills（OpenSpec 生成）
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── labels.yml              # 标签配置
+├── .graphspec/                 # [待实现] 架构数据目录
+├── .opencode/                  # OpenCode 配置（OpenSpec 生成）
+├── openspec/                   # OpenSpec 规范目录
+│   ├── config.yaml             # 项目配置
+│   ├── specs/                  # 规范源
+│   ├── changes/                # 变更提案
+│   └── explorations/           # 探索性规范
+├── packages/                   # [待实现] 代码包
+│   ├── cli/                    # CLI 工具
+│   ├── core/                   # 核心引擎
+│   └── web/                    # Web 可视化
+├── AGENTS.md                   # AI Agent 协作指南
+├── README.md                   # 本文件
+└── LICENSE                     # MIT License
 ```
 
 ## 本地开发
@@ -60,6 +73,11 @@ cd GraphSpec
 
 # 安装依赖（待 packages 初始化后可用）
 bun install
+
+# 验证命令（待 packages 初始化后可用）
+bun test      # 运行测试
+bun lint      # 运行 lint 检查
+bun typecheck # 类型检查
 
 # 开发模式（待实现）
 bun run dev
