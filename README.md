@@ -40,14 +40,11 @@ GraphSpec 想做的，是把"架构态势感知"从"人脑记住项目结构"这
 
 ```
 GraphSpec/
-├── .agents/                    # Codex skills（Agent Skills 标准路径）
-├── .claude/                    # Claude Code 配置（OpenSpec 生成）
 ├── .github/                    # GitHub 配置
 │   ├── ISSUE_TEMPLATE/         # Issue 模板
 │   ├── PULL_REQUEST_TEMPLATE.md
 │   └── labels.yml              # 标签配置
 ├── .graphspec/                 # [待实现] 架构数据目录
-├── .opencode/                  # OpenCode 配置（OpenSpec 生成）
 ├── openspec/                   # OpenSpec 规范目录
 │   ├── config.yaml             # 项目配置
 │   ├── specs/                  # 规范源
@@ -58,7 +55,6 @@ GraphSpec/
 │   ├── core/                   # 核心引擎
 │   └── web/                    # Web 可视化
 ├── AGENTS.md                   # AI Agent 协作指南
-├── CLAUDE.md                   # Claude Code 入口（引用 AGENTS.md）
 ├── README.md                   # 本文件
 └── LICENSE                     # MIT License
 ```
