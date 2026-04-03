@@ -1,0 +1,20 @@
+schema: spec-driven
+
+# 项目上下文见 AGENTS.md，此处仅补充 OpenSpec 特定配置
+context: |
+  See AGENTS.md for full project context.
+  
+  Additional notes for spec writing:
+  - Target platforms: Linux, macOS
+  - Use path.join() for cross-platform file paths
+
+rules:
+  specs:
+    - Be explicit about mechanisms, not just outcomes (say HOW, not just WHAT)
+    - Include scenarios for edge cases and error handling
+  tasks:
+    - Break down into small, verifiable units
+    - Include verification steps
+  design:
+    - Document architectural decisions and trade-offs
+    - Prefer Bun native APIs when available
