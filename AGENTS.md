@@ -45,11 +45,21 @@
 
 ```
 GraphSpec/
+├── .claude/                    # Claude Code 配置（OpenSpec 生成）
+├── .codex/                     # Codex 配置（OpenSpec 生成）
 ├── .github/                    # GitHub 配置
 │   ├── ISSUE_TEMPLATE/         # Issue 模板
+│   ├── prompts/                # GitHub Copilot prompts（OpenSpec 生成）
+│   ├── skills/                 # GitHub Copilot skills（OpenSpec 生成）
 │   ├── PULL_REQUEST_TEMPLATE.md
 │   └── labels.yml              # 标签配置
 ├── .graphspec/                 # [待实现] 架构数据目录
+├── .opencode/                  # OpenCode 配置（OpenSpec 生成）
+├── openspec/                   # OpenSpec 规范目录
+│   ├── config.yaml             # 项目配置
+│   ├── specs/                  # 规范源
+│   ├── changes/                # 变更提案
+│   └── explorations/           # 探索性规范
 ├── packages/                   # [待实现] 代码包
 │   ├── cli/                    # CLI 工具
 │   ├── core/                   # 核心引擎
