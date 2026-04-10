@@ -1,0 +1,20 @@
+{
+  "name": "@graphspec/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "graphspec": "./src/bin.ts"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@graphspec/core": "workspace:*",
+    "@graphspec/web": "workspace:*"
+  },
+  "scripts": {
+    "dev": "bun run src/bin.ts",
+    "test": "bun test",
+    "typecheck": "tsc -p ../../tsconfig.json --noEmit"
+  }
+}

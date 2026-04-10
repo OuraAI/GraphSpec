@@ -1,0 +1,21 @@
+{
+  "name": "graphspec",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "graphspec": "bun run packages/cli/src/bin.ts",
+    "dev": "bun run packages/cli/src/bin.ts",
+    "lint": "oxlint .",
+    "test": "bun test",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "oxlint": "^1.59.0",
+    "typescript": "^5.9.3"
+  }
+}
