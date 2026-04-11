@@ -19,16 +19,16 @@ GraphSpec 想做的，是把"架构态势感知"从"人脑记住项目结构"这
 
 ## 当前进度
 
-**V0.1** - 最小可用起点（规划中）
+**V0.1** - 起盘阶段（规范已立，代码仍是骨架）
 
 | 模块 | 当前状态 | 说明 |
 | --- | --- | --- |
-| CLI | 待开发 | `graphspec init` / `graphspec view` |
-| Core | 待开发 | 架构图解析、数据存储 |
-| Web | 待开发 | 本地可视化服务 |
-| 项目基建 | 已完成 | GitHub 配置、AGENTS.md、README.md |
+| CLI | 骨架占位 | 仅保留可执行入口与 hello world 级别占位输出 |
+| Core | 骨架占位 | 仅保留包入口与最小占位 API |
+| Web | 骨架占位 | 仅保留包入口与最小占位 API |
+| 项目基建 | 已完成 | GitHub 配置、AGENTS.md、README.md、OpenSpec change、workspace 骨架 |
 
-如果只看仓库现状，可以把它理解成：**基础设施已经搭好，核心功能开发即将开始。**
+如果只看仓库现状，可以把它理解成：**规范和仓库骨架已经搭好，真实功能开发还没有开始。**
 
 ## 技术栈
 
@@ -66,40 +66,41 @@ GraphSpec/
 git clone https://github.com/OuraAI/GraphSpec.git
 cd GraphSpec
 
-# 安装依赖（待 packages 初始化后可用）
+# 安装依赖
 bun install
 
-# 验证命令（待 packages 初始化后可用）
+# 验证命令
 bun test      # 运行测试
-bun lint      # 运行 lint 检查
-bun typecheck # 类型检查
+bun run lint      # 运行 lint 检查
+bun run typecheck # 类型检查
 
-# 开发模式（待实现）
-bun run dev
+# 占位入口
+bun run graphspec
 ```
 
 ## 模块说明
 
 ### CLI (`packages/cli/`)
 - **职责**: 命令行入口，用户交互
-- **命令**: `init`, `view`, `sync`
-- **依赖**: `@graphspec/core`
+- **当前状态**: 仅占位入口
+- **依赖**: `@graphspec/core`、`@graphspec/web`
 
 ### Core (`packages/core/`)
 - **职责**: 核心解析和数据处理
-- **能力**: 架构图解析、数据存储、变更检测
+- **当前状态**: 仅占位 API
 - **接口**: TypeScript API
 
 ### Web (`packages/web/`)
 - **职责**: 本地可视化服务
-- **入口**: `localhost:3000`
+- **当前状态**: 仅占位 API
 
 ## 开发路线
 
 GraphSpec 遵循 AI Native 开发模式，从最小起点开始，根据实际需求逐步扩展。
 
 ### 近期目标
-- [ ] CLI 基础框架搭建
+- [x] OpenSpec change 与实现任务拆解
+- [x] workspace / package 骨架搭建
 - [ ] `init` 命令实现
 - [ ] `view` 命令实现
 - [ ] 本地可视化页面

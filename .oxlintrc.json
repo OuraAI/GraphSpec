@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "globals": {
+    "Bun": "readonly"
+  },
+  "ignorePatterns": [
+    ".opencode/**"
+  ],
+  "overrides": [
+    {
+      "files": ["**/*.test.ts"],
+      "globals": {
+        "test": "readonly",
+        "expect": "readonly"
+      }
+    }
+  ]
+}
