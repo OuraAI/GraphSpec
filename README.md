@@ -83,7 +83,7 @@ bun run graphspec
 ### CLI (`packages/cli/`)
 - **职责**: 命令行入口，用户交互
 - **当前状态**: 仅占位入口
-- **依赖**: `@graphspec/core`
+- **依赖**: `@graphspec/core`、`@graphspec/web`
 
 ### Core (`packages/core/`)
 - **职责**: 核心解析和数据处理
