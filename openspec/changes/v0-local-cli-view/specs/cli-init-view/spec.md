@@ -1,60 +1,45 @@
 ## ADDED Requirements
 
-### Requirement: init 命令生成或刷新本地快照
-CLI 必须提供 `graphspec init [path]` 命令，用于扫描目标 JS/TS 项目根目录，并创建或刷新合法的 GraphSpec V1 `.graphspec/graph.json` 快照。
+### Requirement: CLI 必须作为主图资产的主入口
+CLI 必须作为 GraphSpec 主图资产的主入口，支持初始化图工作区、读取图、浏览图，以及在后续阶段扩展图校验或改图能力。
 
-#### Scenario: 在默认目录生成快照
-- **WHEN** 用户在受支持的 JS/TS 项目根目录中执行 `graphspec init`
-- **THEN** 命令会在当前项目根目录下生成 `.graphspec/graph.json`
+#### Scenario: 初始化图工作区
+- **WHEN** 用户在项目中执行 `graphspec init`
+- **THEN** CLI 会初始化 GraphSpec 所需的本地图工作区与主图资产基础结构，而不是直接把扫描结果当作主图
 
-#### Scenario: 在指定目录刷新快照
-- **WHEN** 用户对一个已经包含 `.graphspec/graph.json` 的项目执行 `graphspec init /path/to/project`
-- **THEN** 命令会刷新目标项目中的快照，而不是把它当成一次性初始化命令
+#### Scenario: CLI 作为主读入口
+- **WHEN** 用户或 AI 需要读取当前架构图
+- **THEN** 主要路径是通过 CLI 读取主图资产，而不是直接依赖底层数据文件操作
 
-### Requirement: init 只承诺 JS/TS 静态依赖扫描
-`graphspec init` 命令在 V0.1 中必须只分析 JavaScript / TypeScript 源文件，并且只产出来自静态 `import` 或 `export ... from` 语法的依赖关系。
+### Requirement: view 必须支持整体图与模块下钻
+`graphspec view` 必须支持浏览整体架构图、进入模块级子图，并允许继续查看更细层级的结构内容。
 
-#### Scenario: 遇到非 JS/TS 文件
-- **WHEN** 扫描器遇到 Rust、Python、Go 或其他非 JS/TS 文件
-- **THEN** 这些文件会被排除在快照生成之外，不会把 graph 契约扩展到 V0.1 范围之外
+#### Scenario: 首页查看整体结构
+- **WHEN** 用户启动 `graphspec view`
+- **THEN** 页面首先展示整体架构结构视图，而不是文件树或扫描结果清单
 
-#### Scenario: 遇到静态依赖语法
-- **WHEN** 某个 JS/TS 源文件中包含相对路径静态 import 或 re-export
-- **THEN** 生成的快照中会包含一条 `static-import` 边，把导入方文件节点连接到解析后的目标文件节点
+#### Scenario: 进入模块级子图
+- **WHEN** 用户在整体图中选择某个模块节点
+- **THEN** 页面能够进入该模块的细致结构图，而不是直接跳成文件列表
 
-### Requirement: view 命令只渲染已有快照
-CLI 必须提供 `graphspec view` 命令，该命令基于现有 `.graphspec/graph.json` 快照启动本地只读可视化服务，并且不能隐式触发重新扫描。
+### Requirement: 节点详情必须返回相关内容
+节点详情视图必须返回与该节点相关的解释材料和最小关系上下文，而不是只返回一个节点名字或路径。
 
-#### Scenario: 快照存在时启动本地服务
-- **WHEN** 用户在已经存在 `.graphspec/graph.json` 的项目根目录中执行 `graphspec view`
-- **THEN** 命令会启动本地 HTTP 服务，并基于该快照渲染浏览器可访问的可视化页面
+#### Scenario: 查看节点相关内容
+- **WHEN** 用户在图中选中一个节点
+- **THEN** 页面会展示该节点的相关内容、相关关系以及理解该节点所需的最小上下文
 
-#### Scenario: 快照缺失时返回可操作错误
-- **WHEN** 用户在不存在 `.graphspec/graph.json` 的项目根目录中执行 `graphspec view`
-- **THEN** 命令会以可操作错误退出，并明确提示用户先执行 `graphspec init`
+#### Scenario: 节点详情可挂接代码证据
+- **WHEN** 某个节点已经关联了文件、依赖或代码片段等证据
+- **THEN** 节点详情能够展示这些证据，但不会把证据误当成主图本体
 
-### Requirement: view 提供只读的 cluster-first blast radius 浏览
-`graphspec view` 的默认体验必须先展示顶层 cluster 概览，必须允许继续下钻到 file 节点，并且必须为被查看的 file 节点展示直接入边与出边。
+### Requirement: scanner 如果存在只能作为辅助证据层
+如果 CLI 提供扫描、导入代码证据或一致性校验能力，这些能力只能作为辅助证据层使用，不能直接覆盖主图资产。
 
-#### Scenario: 打开页面先看到 cluster 概览
-- **WHEN** `graphspec view` 成功启动后浏览器页面完成加载
-- **THEN** 页面初始状态展示的是顶层 cluster 概览，而不是平铺的文件图
+#### Scenario: 生成代码证据
+- **WHEN** CLI 从代码中提取 import/export、文件路径或依赖痕迹
+- **THEN** 这些结果会作为图的解释或校验材料存在，而不是直接成为主图事实来源
 
-#### Scenario: 下钻后查看文件直接影响范围
-- **WHEN** 用户下钻进入某个 cluster 并选中一个 file 节点
-- **THEN** 页面会展示该 file 节点直接相关的入边和出边 `static-import`，以支持 blast radius review
-
-### Requirement: view 通过本地 API 暴露只读图查询
-由 `graphspec view` 启动的本地服务必须提供只读 HTTP 接口，用于概览查询、cluster 下钻和 node blast radius 查询；Web 客户端必须消费这些接口，而不是直接读取快照文件。
-
-#### Scenario: 请求概览数据
-- **WHEN** Web 客户端请求 `GET /api/overview`
-- **THEN** 服务会返回基于当前快照生成的顶层 cluster 概览
-
-#### Scenario: 请求 cluster 子项
-- **WHEN** Web 客户端请求 `GET /api/clusters/:clusterId`
-- **THEN** 服务会返回该 cluster 的直接子 cluster、file 节点以及边摘要
-
-#### Scenario: 请求 node 直接依赖
-- **WHEN** Web 客户端请求 `GET /api/nodes/:nodeId`
-- **THEN** 服务会返回当前快照中该节点的直接入边和出边
+#### Scenario: 进行一致性校验
+- **WHEN** CLI 使用扫描结果校验主图和代码之间是否存在明显漂移
+- **THEN** 校验结果只会作为反馈或提示，不会自动重写主图资产
