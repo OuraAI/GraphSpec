@@ -79,7 +79,7 @@ description: Use when the user wants to create, refine, or batch-create GitHub d
 优先使用这个脚本：
 
 ```bash
-ruby .agents/skills/gh-issue-driven/scripts/sync_repo_labels.rb --repo OuraAI/GraphSpec
+python3 .agents/skills/gh-issue-driven/scripts/sync_repo_labels.py --repo OuraAI/GraphSpec
 ```
 
 如果脚本不可用，也必须用 `gh label create <name> --force` 把缺失标签补齐。不要明知仓库定义了更细标签，却退化成只挂 GitHub 默认的 `enhancement` / `documentation`。
