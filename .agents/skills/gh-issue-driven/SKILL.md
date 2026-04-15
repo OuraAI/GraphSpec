@@ -1,6 +1,13 @@
 ---
 name: gh-issue-driven
 description: Use when the user wants to create, refine, or batch-create GitHub development issues for GraphSpec with gh CLI. This skill turns OpenSpec seeds, discussions, or rough requests into IssueDriven issues with background, why-now, scope, unresolved questions, subtasks, acceptance, and phase-appropriate harness, using the repo's dedicated developer issue template instead of generic user-facing templates.
+license: See repository LICENSE
+compatibility:
+  agent: "*"
+metadata:
+  category: developer-workflow
+  scope: github-issues
+  audience: GraphSpec maintainers
 ---
 
 这个 skill 服务的是 GraphSpec 自己的开发 issue 工作流，不是普通用户的功能建议模板。
