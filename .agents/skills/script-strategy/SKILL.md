@@ -1,6 +1,18 @@
 ---
 name: script-strategy
 description: Use when the user wants to add, update, or choose an implementation approach for repository scripts, automation helpers, or maintenance tooling. This skill decides whether to use shell, Python, Bun/TypeScript, or another option, with Python as the default for non-trivial scripts, shell for thin command glue, and Bun/TypeScript when the script must share repository types or runtime logic.
+license: See repository license
+compatibility:
+  agents: "*"
+metadata:
+  category: repository-maintenance
+  tags:
+    - scripting
+    - automation
+    - tooling
+    - python
+    - shell
+    - bun
 ---
 
 这个 skill 用来决定“仓库脚本该用什么写”，避免脚本语言随手扩散。
