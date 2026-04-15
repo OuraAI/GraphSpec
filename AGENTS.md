@@ -88,6 +88,23 @@ GraphSpec/
 
 完成后按项目已有方式验证，并告诉我改了哪些文件、怎么验证的。
 
+### 5. 开发 Issue 走 IssueDriven 模板
+
+- GitHub 开发 issue 不是普通施工单，必须先说明“背景 / 为什么现在做”，不能只写目标、非目标和验收标准。
+- 每个 issue 只切一个可收敛的不确定性；如果一个 issue 同时跨多个未决架构问题，先拆 issue，再谈实现。
+- issue 必须显式写出前置依赖、未决点和子任务树；未决点没收住前，不得标记 `status:ready`。
+- Harness 要按阶段递增，不允许在早期 issue 里一次性预支重型验证。
+- 创建开发 issue 时，优先使用 `.github/ISSUE_TEMPLATE/dev_task.md` 与专用 gh issue skill。
+- 创建 GitHub 开发 issue 前，先同步 `.github/labels.yml` 到远端仓库；不要让开发 issue 退化成只有 GitHub 默认标签。
+- 每个 GitHub 开发 issue 至少应具备 `type:*`、`priority:*`、`status:*` 三类标签；影响范围明确时补 `area:*`，复杂度可判断时补 `complexity:*`。
+
+### 6. 解决开发 Issue 必须先过 Spec 审核
+
+- 接手 GitHub 开发 issue 时，优先使用 issue delivery skill，并要求在规划模式下启动。
+- 开始实现前必须先问多个关键问题，先产出或更新可审核的持久化 spec，再等待人工审核通过。
+- `tasks` 必须按依赖关系和并行性组织，不能只写直线施工顺序。
+- 对边界清晰、写集不冲突的并行任务，优先安排子 Agent，而不是全部串行堆在主线程里。
+
 ---
 
 ## 护栏机制
@@ -131,4 +148,7 @@ GraphSpec/
 | 日期 | 版本 | 变更 |
 |------|------|------|
 | 2026-04-02 | 0.1.0 | 初始化 AGENTS.md |
-| 2026-04-02 | 0.1.1 | 按 AI Native Engineering 风格改造 |
+| 2026-04-02 | 0.1.1 | 按项目当前协作方式补充规则 |
+| 2026-04-13 | 0.1.2 | 补充 IssueDriven 开发 issue 创建规范 |
+| 2026-04-15 | 0.1.4 | 补充 GitHub issue 标签同步与完整标签要求 |
+| 2026-04-14 | 0.1.3 | 补充 issue 解决流程的规划模式与 spec 审核门槛 |
