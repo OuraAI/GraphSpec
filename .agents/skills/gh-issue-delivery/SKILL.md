@@ -1,6 +1,13 @@
 ---
 name: gh-issue-delivery
 description: Use when the user wants to pick up and solve a GitHub development issue through a spec-first workflow. This skill requires the agent's planning mode, forces a structured multi-question clarification round, produces a durable spec artifact for human review, and only after explicit approval implements the work with dependency-aware tasks and delegated parallel slices.
+license: Proprietary
+compatibility:
+  planning_mode_required: true
+  structured_questioning_required: true
+metadata:
+  language: zh-CN
+  scope: github-issue-delivery
 ---
 
 这个 skill 用来解决开发 issue，但它是 spec-first 的，不是“拿到 issue 直接写代码”。
