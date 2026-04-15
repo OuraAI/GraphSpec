@@ -126,7 +126,12 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    labels = parse_labels(Path(args.file))
+    try:
+        labels = parse_labels(Path(args.file))
+    except ValueError as exc:
+        sys.stderr.write(f"error: {exc}\n")
+        return 1
+
     sync_labels(args.repo, labels)
     print(f"synced {len(labels)} labels")
     return 0
